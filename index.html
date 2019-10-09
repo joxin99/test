@@ -19,8 +19,9 @@
 
     <h1>Vue Test</h1>
     <div id="app">
-      <p>{{ foo }}</p>
-      <button v-on:click="add">+1</button>
+      <p>{{ result }}</p>
+      <input v-model="count">
+      <button v-on:click="add">+{{count}}</button>
     </div>
 
     <script>
@@ -55,10 +56,13 @@
 
       new Vue({
         el: "#app",
-        data: obj,
+        data: {
+            result: 0,
+            count: 1
+        },
         methods: {
             add() {
-                this.foo+=1;
+                this.result= 1*this.result + 1*this.count;
             }
         }
       });
