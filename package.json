@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/joxin99/test/issues"
   },
-  "homepage": "https://github.com/joxin99/test#readme"
+  "homepage": "https://github.com/joxin99/test#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
