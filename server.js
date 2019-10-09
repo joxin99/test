@@ -1,16 +1,8 @@
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
+var app = express();
 
-var handler = function(request, response) {
-    response.writeHead(200, {
-        'content-type': 'text/html;charset:utf-8'
-    })
-    response.write(fs.readFileSync('./index.html'));
-    response.end();
-}
+app.use('/', express.static(__dirname));
 
-var server = http.createServer(handler);
-
-server.listen(3000, function() {
+app.listen(3000, function() {
     console.log('server listen at http://localhost:3000');
 });

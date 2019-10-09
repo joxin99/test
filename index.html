@@ -10,34 +10,58 @@
         color: red;
       }
     </style>
+    <script src="node_modules/vue/dist/vue.js"></script>
   </head>
   <body>
     <h1>DOM Test</h1>
-    <p id="test"></p>
-    <button>测试</button>
+    <p id="result">0</p>
+    <button>+1</button>
+
+    <h1>Vue Test</h1>
+    <div id="app">
+      <p>{{ foo }}</p>
+      <button v-on:click="add">+1</button>
+    </div>
+
     <script>
-      class MyClass {
-        constructor() {
-          var button = document.querySelector("button");
-          button.addEventListener("click", this.init);
-          document.addEventListener("changeText", this.init2);
+    //   class MyClass {
+    //     constructor() {
+    //       var button = document.querySelector("button");
+    //       button.addEventListener("click", this.init);
+    //       document.addEventListener("changeText", this.init2);
+    //     }
+    //     init() {
+    //       var event = new CustomEvent("changeText");
+    //       document.dispatchEvent(event);
+    //     }
+    //     init2() {
+    //       var el = document.querySelector("#test");
+    //       el.innerHTML = '<span style="color: blue;">blue</span>';
+    //       var span = document.createElement("span");
+    //       span.textContent = "yellow";
+    //       span.style.color = "yellow";
+    //       span.setAttribute("class", "yellow");
+    //       el.appendChild(span);
+    //       console.log(2);
+    //     }
+    //   }
+    //   var myClass = new MyClass();
+
+      var obj = {
+        foo: 0
+      };
+
+    //   Object.freeze(obj);
+
+      new Vue({
+        el: "#app",
+        data: obj,
+        methods: {
+            add() {
+                this.foo+=1;
+            }
         }
-        init() {
-          var event = new CustomEvent("changeText");
-          document.dispatchEvent(event);
-        }
-        init2() {
-          var el = document.querySelector("#test");
-          el.innerHTML = '<span style="color: blue;">blue</span>';
-          var span = document.createElement("span");
-          span.textContent = "yellow";
-          span.style.color = "yellow";
-          span.setAttribute("class", "yellow");
-          el.appendChild(span);
-          console.log(2);
-        }
-      }
-      var myClass = new MyClass();
+      });
     </script>
   </body>
 </html>
