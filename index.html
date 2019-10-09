@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <style>
+      #test {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM Test</h1>
+    <p id="test"></p>
+    <button>测试</button>
+    <script>
+      class MyClass {
+        constructor() {
+          var button = document.querySelector("button");
+          button.addEventListener("click", this.init);
+          document.addEventListener("changeText", this.init2);
+        }
+        init() {
+          var event = new CustomEvent("changeText");
+          document.dispatchEvent(event);
+        }
+        init2() {
+          var el = document.querySelector("#test");
+          el.innerHTML = '<span style="color: blue;">blue</span>';
+          var span = document.createElement("span");
+          span.textContent = "yellow";
+          span.style.color = "yellow";
+          span.setAttribute("class", "yellow");
+          el.appendChild(span);
+          console.log(2);
+        }
+      }
+      var myClass = new MyClass();
+    </script>
+  </body>
+</html>
